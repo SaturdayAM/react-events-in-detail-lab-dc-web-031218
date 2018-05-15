@@ -5,10 +5,23 @@ import ReactDOM from 'react-dom';
 import CoordinatesButton from './components/CoordinatesButton';
 import DelayedButton from './components/DelayedButton';
 
+
+let callback = (arr) =>{
+	console.log('from callback: ', arr);
+}
+
+let delayedCallback = (e)=> {
+	console.log('from delayedCallback: ', e);
+}
+
+let delay = 1000;
+
 ReactDOM.render(
   <div>
-    <CoordinatesButton />
-    <DelayedButton />
+    <CoordinatesButton onReceiveCoordinates={callback}/>
+    <br/>
+    <DelayedButton onDelayedClick={delayedCallback}
+     delay={delay}/>
   </div>,
   document.getElementById('global')
 );
